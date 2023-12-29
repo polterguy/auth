@@ -22,7 +22,7 @@ validators.string:x:@.arguments/*/password
 // Hashing user's password.
 crypto.password.hash:x:@.arguments/*/password
 
-// Inserts user into database.
+// Opens up database connection.
 data.connect:[generic|magic]
 
    // Inserting user into database.

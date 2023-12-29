@@ -8,8 +8,10 @@
       mandatory:bool:true
 .icon:supervisor_account
 
-// Checks if username is available in database.
+// Opens up database connection.
 data.connect:[generic|magic]
+
+   // Selecting user from database such that we can check if it exists or not.
    data.read
       table:users
       columns
