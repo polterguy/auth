@@ -1,6 +1,8 @@
 
 /*
  * Associates the specified [username] with the specified [extra] fields.
+ *
+ * If extra field already exists for user, it will be changed - If not, it will be inserted.
  */
 .arguments
    username
