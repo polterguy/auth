@@ -1,0 +1,34 @@
+
+/*
+ * Returns true if the specified username is available.
+ */
+.arguments
+   username
+      type:string
+      mandatory:bool:true
+.icon:supervisor_account
+
+// Checks if username is available in database.
+data.connect:[generic|magic]
+   data.read
+      table:users
+      columns
+         username
+      where
+         and
+            username.eq:x:@.arguments/*/username
+
+   // Checks if above invocation returned anything.
+   if
+      exists:x:@data.read/*
+      .lambda
+
+         // User exists, returning false to caller.
+         return
+            available:bool:false
+
+   else
+
+      // User does not exist, returning true to caller.
+      return
+         available:bool:true
