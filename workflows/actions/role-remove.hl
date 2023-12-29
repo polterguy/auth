@@ -1,19 +1,19 @@
 
 /*
- * Associates the specified [username] with the specified [extra] fields.
+ * Removes the specified [roles] from the specified [username].
  */
 .arguments
    username
       type:string
       mandatory:bool:true
-   extra
-      type:key-value
+   roles
+      type:array
       mandatory:bool:true
 .icon:supervisor_account
 
 // Sanity checking invocation.
 validators.mandatory:x:@.arguments/*/username
-validators.mandatory:x:@.arguments/*/extra
+validators.mandatory:x:@.arguments/*/roles
 
 // Connecting to database.
 data.connect:[generic|magic]
@@ -36,12 +36,11 @@ data.connect:[generic|magic]
          throw:No such user
             username:x:@.arguments/*/username
 
-   // Adding extra fields to user.
-   for-each:x:@.arguments/*/extra/*
-      get-name:x:@.dp/#
-      data.create
-         table:users_extra
-         values
-            user:x:@.arguments/*/username
-            type:x:@get-name
-            value:x:@.dp/#
+   // Removing [roles] from [username]
+   for-each:x:@.arguments/*/roles/*
+      data.delete
+         table:users_roles
+         where
+            and
+               user.eq:x:@.arguments/*/username
+               role.eq:x:@.dp/#
