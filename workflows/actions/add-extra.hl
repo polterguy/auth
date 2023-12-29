@@ -1,0 +1,47 @@
+
+/*
+ * Associates the specified [username] with the specified [extra] fields.
+ */
+.arguments
+   username
+      type:string
+      mandatory:bool:true
+   extra
+      type:key-value
+      mandatory:bool:true
+.icon:supervisor_account
+
+// Sanity checking invocation.
+validators.mandatory:x:@.arguments/*/username
+validators.mandatory:x:@.arguments/*/extra
+
+// Connecting to database.
+data.connect:[generic|magic]
+
+   // Verifying user exists.
+   data.read
+      table:users
+      columns
+         username
+      where
+         and
+            username.eq:x:@.arguments/*/username
+
+   // Verifying above invocation returned something.
+   if
+      not-exists:x:@data.read/*
+      .lambda
+
+         // Oops ...!!
+         throw:No such user
+            username:x:@.arguments/*/username
+
+   // Adding extra fields to user.
+   for-each:x:@.arguments/*/extra/*
+      get-name:x:@.dp/#
+      data.create
+         table:users_extra
+         values
+            user:x:@.arguments/*/username
+            type:x:@get-name
+            value:x:@.dp/#
