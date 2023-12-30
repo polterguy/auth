@@ -1,0 +1,27 @@
+
+/*
+ * Registers the specified [username] as a user in the system, with the specified [password].
+ */
+.arguments
+   username
+      type:string
+      mandatory:bool:true
+.icon:supervisor_account
+
+// Sanity checking invocation.
+validators.mandatory:x:@.arguments/*/username
+
+// Opens up database connection.
+data.connect:[generic|magic]
+
+   // Inserting user into database.
+   data.read
+      table:users
+      columns
+         username
+         created
+      where
+         and
+            username.eq:x:@.arguments/*/username
+   yield
+      created:x:@data.read/*/*/created

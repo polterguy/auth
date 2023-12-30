@@ -1,12 +1,22 @@
 
 /*
  * Returns true if the specified username is available.
+ *
+ * Optionally apply [throw] as true, at which point the action will throw an exception if
+ * the username is already taken.
  */
 .arguments
    username
       type:string
       mandatory:bool:true
+   throw
+      type:bool
+      mandatory:bool:false
 .icon:supervisor_account
+
+// Applying defaults.
+validators.default:x:@.arguments
+   throw:bool:false
 
 // Opens up database connection.
 data.connect:[generic|magic]
@@ -24,6 +34,12 @@ data.connect:[generic|magic]
    if
       exists:x:@data.read/*
       .lambda
+
+         // Checking if we should throw an exception instead of returning false.
+         if:x:@.arguments/*/throw
+            throw:User already exists
+               status:int:400
+               public:bool:true
 
          // User exists, returning false to caller.
          return

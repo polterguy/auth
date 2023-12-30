@@ -1,6 +1,8 @@
 
 /*
  * Registers the specified [username] as a user in the system, with the specified [password].
+ *
+ * Notice, [password] will be hashed using blowfish hashing.
  */
 .arguments
    username
