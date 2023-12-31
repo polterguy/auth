@@ -1,6 +1,8 @@
 
 /*
  * Returns all extra fields for the specified [username].
+ *
+ * Notice, will return incomplete values if you want to reference return values in consecutive actions.
  */
 .arguments
    username

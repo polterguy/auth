@@ -1,6 +1,8 @@
 
 /*
  * Deletes the specified [username] from the system.
+ *
+ * Notice, invocation will cascade and does not require you to delete roles or extra information first.
  */
 .arguments
    username

@@ -1,6 +1,8 @@
 
 /*
- * Registers the specified [username] as a user in the system, with the specified [password].
+ * Retrieves the specified [username] and return information associated with the user.
+ *
+ * Only returns when the user was created. Use other actions to retrieve roles or extra information.
  */
 .arguments
    username

@@ -1,6 +1,9 @@
 
 /*
  * Associates the specified [username] with the specified [roles] roles.
+ *
+ * Notice, does not remove roles from user, only adds roles. This action will also throw
+ * if you try to associate a user with a role the user is already associated with.
  */
 .arguments
    username
