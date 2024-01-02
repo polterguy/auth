@@ -17,3 +17,8 @@ and user management logic. The following actions are included in the module.
 * users-get - Returns information associated with some user
 
 By combining the above actions it should be fairly easy to create registration logic in Magic.
+
+In addition the module contains a reusable workflow encapsulating the imports actions from above, correctly
+changed together. This workflow is as follows.
+
+* register - Registers a new user with the specified username, password, email, and name - And optionally associated the user with a default role
