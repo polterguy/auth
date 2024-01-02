@@ -4,6 +4,7 @@
 Hyperlambda registration module for Magic, giving you workflow actions for easily creating registration
 and user management logic. The following actions are included in the module.
 
+* authenticate - Authenticates the specified user and returns a JWT token
 * extras-get - Retrieves extra information for users, such as email and name
 * extras-remove - Removes extra information associated with users
 * extras-upsert - Inserts or updates extra information associated with users
