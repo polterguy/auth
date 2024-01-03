@@ -53,7 +53,7 @@ data.connect:[generic|magic]
                status:int:400
                public:bool:true
 
-         // Extra field exists, returning false to caller.
+         // Returning false to caller.
          return
             available:bool:false
 
