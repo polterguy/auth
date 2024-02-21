@@ -1,10 +1,11 @@
 
 /*
- * Workflow that registers a user in the system.
+ * Workflow that registers a new user in the system.
  *
  * Registers the specified [username] as a new user with [password] as password,
  * and [name] and [email] as extra fields. The action will associate the user with the [role] role.
- * The action does not return anything but will throw an exception if it does not succeed.
+ *
+ * The workflow does not return anything but will throw an exception if it does not succeed.
  */
 .arguments
    username:string
@@ -27,7 +28,7 @@ execute:magic.workflows.actions.execute
 /*
  * Registers the specified [username] as a user in the system, with the specified [password].
  *
- * Notice, [password] will be hashed using blowfish hashing.
+ * Notice, [password] will be hashed using blowfish hashing by the users-create action.
  */
 execute:magic.workflows.actions.execute
    name:users-create
@@ -39,7 +40,7 @@ execute:magic.workflows.actions.execute
 /*
  * Associates the specified [username] with the specified [extra] fields.
  *
- * [name] and [email] are special system extra fields in Magic and handled especially.
+ * [name] and [email] are special system extra fields in Magic and handled accordingly.
  */
 execute:magic.workflows.actions.execute
    name:extras-upsert
@@ -51,7 +52,7 @@ execute:magic.workflows.actions.execute
          email:x:@.arguments/*/email
 
 /*
- * Checking if we've got a [role] argument, and only if we do we associate
+ * Checking if we've got a [role] argument, and only if we do, we associate
  * the user with the specified [role].
  */
 if

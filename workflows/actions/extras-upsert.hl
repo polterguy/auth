@@ -42,7 +42,7 @@ data.connect:[generic|magic]
    for-each:x:@.arguments/*/extra/*
       get-name:x:@.dp/#
 
-      // Deleting oldvalue (if existing).
+      // Deleting old value (if existing).
       data.delete
          table:users_extra
          where
