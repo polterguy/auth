@@ -37,8 +37,22 @@ jobs:
           timeout: 50000
           customHeaders: '{
             "Content-Type": "multipart/form-data",
-            "Authorization": "Bearer ${{ secrets.TOKEN }}",
-            "Content-Disposition": "attachment; filename=auth.md"
+            "Authorization": "Bearer ${{ secrets.TOKEN }}"
             }'
           data: '{"folder": "/etc/bazar/"}'
           files: '{"file": "./README.md"}'
+      - name: Renaming description file
+        if: success()
+        uses: fjogeleit/http-request-action@v1.14.0
+        with:
+          url: 'https://ainiro.io/magic/system/file-system/rename'
+          method: 'POST'
+          timeout: 50000
+          customHeaders: '{
+            "Content-Type": "application/json",
+            "Authorization": "Bearer ${{ secrets.TOKEN }}"
+            }'
+          data: '{
+            "oldName": "/etc/bazar/README.md",
+            "newName": "/etc/bazar/auth.md"
+            }'
