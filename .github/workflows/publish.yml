@@ -14,7 +14,7 @@ jobs:
         uses: vimtor/action-zip@v1
         with:
           files: ./
-          dest: auth.zip
+          dest: ${{ github.event.repository.name }}.zip
       - name: Publish
         if: success()
         uses: fjogeleit/http-request-action@v1.14.0
@@ -27,7 +27,7 @@ jobs:
             "Authorization": "Bearer ${{ secrets.TOKEN }}"
             }'
           data: '{"folder": "/etc/bazar/"}'
-          files: '{"file": "./auth.zip"}'
+          files: '{"file": "./${{ github.event.repository.name }}.zip"}'
       - name: Uploading description
         if: success()
         uses: fjogeleit/http-request-action@v1.14.0
@@ -54,5 +54,5 @@ jobs:
             }'
           data: '{
             "oldName": "/etc/bazar/README.md",
-            "newName": "auth.md"
+            "newName": "${{ github.event.repository.name }}.md"
             }'
