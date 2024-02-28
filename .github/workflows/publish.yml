@@ -28,3 +28,17 @@ jobs:
             }'
           data: '{"folder": "/etc/bazar/"}'
           files: '{"file": "./auth.zip"}'
+      - name: Uploading description
+        if: success()
+        uses: fjogeleit/http-request-action@v1.14.0
+        with:
+          url: 'https://ainiro.io/magic/system/file-system/file'
+          method: 'PUT'
+          timeout: 50000
+          customHeaders: '{
+            "Content-Type": "multipart/form-data",
+            "Authorization": "Bearer ${{ secrets.TOKEN }}",
+            "Content-Disposition": "attachment; filename=auth.md"
+            }'
+          data: '{"folder": "/etc/bazar/"}'
+          files: '{"file": "./README.md"}'
