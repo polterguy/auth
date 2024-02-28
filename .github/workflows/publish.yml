@@ -54,5 +54,5 @@ jobs:
             }'
           data: '{
             "oldName": "/etc/bazar/README.md",
-            "newName": "/etc/bazar/auth.md"
+            "newName": "auth.md"
             }'
