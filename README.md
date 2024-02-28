@@ -1,8 +1,6 @@
 
-# Registration module
-
-Hyperlambda registration module for Magic, giving you workflow actions for easily creating registration
-and user management logic. The following actions are included in the module.
+Auth module for Magic, giving you workflow actions for easily creating registration
+and user management logic.
 
 ## Workflow actions
 
