@@ -1,6 +1,6 @@
 
 /*
- * Registers a new user in the system.
+ * Registers a new user in the system
  *
  * Registers the specified [username] as a new user with [password] as password,
  * and [name] and [email] as extra fields. The action will associate the user with the [role] role.
