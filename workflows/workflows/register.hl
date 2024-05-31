@@ -13,6 +13,7 @@
    name:string
    email:string
    role:string
+.type:internal
 
 /*
  * Throws an exception unless the specified [username] is available to use as the username
