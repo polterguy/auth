@@ -21,7 +21,7 @@
  */
 execute:magic.workflows.actions.execute
    name:username-available
-   filename:/modules/registration/workflows/actions/username-available.hl
+   filename:/modules/auth/workflows/actions/username-available.hl
    arguments
       username:x:@.arguments/*/username
       throw:bool:true
@@ -33,7 +33,7 @@ execute:magic.workflows.actions.execute
  */
 execute:magic.workflows.actions.execute
    name:users-create
-   filename:/modules/registration/workflows/actions/users-create.hl
+   filename:/modules/auth/workflows/actions/users-create.hl
    arguments
       username:x:@.arguments/*/username
       password:x:@.arguments/*/password
@@ -45,7 +45,7 @@ execute:magic.workflows.actions.execute
  */
 execute:magic.workflows.actions.execute
    name:extras-upsert
-   filename:/modules/registration/workflows/actions/extras-upsert.hl
+   filename:/modules/auth/workflows/actions/extras-upsert.hl
    arguments
       username:x:@.arguments/*/username
       extra
@@ -71,7 +71,7 @@ if
        */
       execute:magic.workflows.actions.execute
          name:roles-add
-         filename:/modules/registration/workflows/actions/roles-add.hl
+         filename:/modules/auth/workflows/actions/roles-add.hl
          arguments
             username:x:@.arguments/*/username
             roles
